@@ -131,3 +131,12 @@ export async function parentRegisterPush(token) {
   const res = await parentClient.post('/api/mobile/parent/register-push', { token });
   return res.data;
 }
+export async function parentGetPolicies() {
+  const res = await parentClient.get('/api/mobile/parent/policies');
+  return res.data;
+}
+
+export async function schoolGetBillingUrl(plan = 'school') {
+  const res = await schoolClient.post('/api/mobile/school/billing/checkout', { plan });
+  return res.data;
+}

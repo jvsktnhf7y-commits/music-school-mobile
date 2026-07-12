@@ -13,6 +13,7 @@ import LoginScreen        from '../screens/LoginScreen';
 import SchoolDashboard    from '../screens/school/DashboardScreen';
 import SchoolTeachers     from '../screens/school/TeachersScreen';
 import SchoolAnalytics    from '../screens/school/AnalyticsScreen';
+import SchoolBilling      from '../screens/school/BillingScreen';
 
 import TeacherDashboard   from '../screens/teacher/DashboardScreen';
 import TeacherStudents    from '../screens/teacher/StudentsScreen';
@@ -25,6 +26,7 @@ import AddNote            from '../screens/teacher/AddNoteScreen';
 import ParentDashboard    from '../screens/parent/DashboardScreen';
 import ParentNotes        from '../screens/parent/NotesScreen';
 import ParentPayments     from '../screens/parent/PaymentsScreen';
+import ParentPolicies     from '../screens/parent/PoliciesScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab   = createBottomTabNavigator();
@@ -38,7 +40,7 @@ function SchoolTabs() {
   return (
     <Tab.Navigator screenOptions={({ route }) => ({
       tabBarIcon: ({ focused }) => {
-        const icons = { Dashboard: '🏠', Teachers: '👩‍🏫', Analytics: '📊' };
+        const icons = { Dashboard: '🏠', Teachers: '👩‍🏫', Analytics: '📊', Billing: '💳' };
         return <Text style={{ fontSize: focused ? 22 : 20, opacity: focused ? 1 : 0.5 }}>{icons[route.name]}</Text>;
       },
       tabBarActiveTintColor: COLORS.primary, tabBarInactiveTintColor: COLORS.muted,
@@ -48,6 +50,7 @@ function SchoolTabs() {
       <Tab.Screen name="Dashboard" component={SchoolDashboard} options={{ title: 'School Dashboard' }} />
       <Tab.Screen name="Teachers"  component={SchoolTeachers}  options={{ title: 'Teachers' }} />
       <Tab.Screen name="Analytics" component={SchoolAnalytics} options={{ title: 'Analytics' }} />
+      <Tab.Screen name="Billing"   component={SchoolBilling}   options={{ title: 'Billing' }} />
     </Tab.Navigator>
   );
 }
@@ -75,16 +78,17 @@ function ParentTabs() {
   return (
     <Tab.Navigator screenOptions={({ route }) => ({
       tabBarIcon: ({ focused }) => {
-        const icons = { Home: '🏠', Notes: '📝', Pay: '💳' };
+        const icons = { Home: '🏠', Notes: '📝', Pay: '💳', Policies: '📋' };
         return <Text style={{ fontSize: focused ? 22 : 20, opacity: focused ? 1 : 0.5 }}>{icons[route.name]}</Text>;
       },
       tabBarActiveTintColor: COLORS.warning, tabBarInactiveTintColor: COLORS.muted,
       tabBarLabelStyle: TAB_LBL, tabBarStyle: TAB_BAR,
       headerStyle: HDR, headerTitleStyle: HDR_TTL, headerTintColor: COLORS.text,
     })}>
-      <Tab.Screen name="Home"  component={ParentDashboard} options={{ title: 'Dashboard' }} />
-      <Tab.Screen name="Notes" component={ParentNotes}     options={{ title: 'Lesson Notes' }} />
-      <Tab.Screen name="Pay"   component={ParentPayments}  options={{ title: 'Payments' }} />
+      <Tab.Screen name="Home"     component={ParentDashboard} options={{ title: 'Dashboard' }} />
+      <Tab.Screen name="Notes"    component={ParentNotes}     options={{ title: 'Lesson Notes' }} />
+      <Tab.Screen name="Pay"      component={ParentPayments}  options={{ title: 'Payments' }} />
+      <Tab.Screen name="Policies" component={ParentPolicies}  options={{ title: 'Policies' }} />
     </Tab.Navigator>
   );
 }
